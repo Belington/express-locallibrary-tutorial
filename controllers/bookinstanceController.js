@@ -1,10 +1,9 @@
-const { body,validationResult } = require('express-validator/check');
-const { sanitizeBody } = require('express-validator/filter');
-
 var BookInstance = require('../models/bookinstance')
 var Book = require('../models/book')
 var async = require('async')
 
+const { body,validationResult } = require('express-validator/check');
+const { sanitizeBody } = require('express-validator/filter');
 
 // Display list of all BookInstances.
 exports.bookinstance_list = function(req, res, next) {
@@ -38,15 +37,15 @@ exports.bookinstance_detail = function(req, res, next) {
 };
 
 // Display BookInstance create form on GET.
-exports.bookinstance_create_get = function(req, res, next) {       
+exports.bookinstance_create_get = function(req, res, next) {
 
-    Book.find({},'title')
+     Book.find({},'title')
     .exec(function (err, books) {
       if (err) { return next(err); }
       // Successful, so render.
-      res.render('bookinstance_form', {title: 'Create BookInstance', book_list:books});
+      res.render('bookinstance_form', {title: 'Create BookInstance', book_list:books } );
     });
-    
+
 };
 
 // Handle BookInstance create on POST.
@@ -88,7 +87,7 @@ exports.bookinstance_create_post = [
             return;
         }
         else {
-            // Data from form is valid.
+            // Data from form is valid
             bookinstance.save(function (err) {
                 if (err) { return next(err); }
                    // Successful - redirect to new record.
@@ -97,6 +96,8 @@ exports.bookinstance_create_post = [
         }
     }
 ];
+
+
 
 // Display BookInstance delete form on GET.
 exports.bookinstance_delete_get = function(req, res, next) {
