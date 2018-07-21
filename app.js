@@ -15,7 +15,7 @@ app.use(helmet());
 
 //Set up mongoose connection
 var mongoose = require('mongoose');
-var mongoDB = 'mongodb://Tonny:tonny12@ds219040.mlab.com:19040/local-library';
+var mongoDB = 'mongodb://Tonny:tonny12@ds219040.mlab.com:19040/local-library'
 var mongoDB = process.env.MONGODB_URI || 'mongodb://Tonny:tonny12@ds119748.mlab.com:19748/local_library';
 mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
